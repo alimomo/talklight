@@ -17,5 +17,5 @@ def myWebServer(server_class=BaseHTTPServer.HTTPServer,handler_class=BaseHTTPSer
         httpd.handle_request()
 
 if __name__ == '__main__':
-    print 'Running WebServer'
+    print 'Running WebServer!'
     myWebServer()
