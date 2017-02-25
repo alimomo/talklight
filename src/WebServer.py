@@ -5,7 +5,12 @@ Start a HTTP Web Server instance
 
 import BaseHTTPServer
 
+# HTTP Server
 ADDR = ("127.0.0.1",8088)
+
+#WebSocket Server
+WS_ADDR = ("127.0.0.1",3999)
+
 
 def keep_running():
     return True
