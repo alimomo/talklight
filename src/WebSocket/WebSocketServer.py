@@ -1,16 +1,28 @@
 import socket
 import threading
-from WebServer import WS_ADDR
+
+#WebSocket Server Address
+WS_ADDR = ("127.0.0.1",9876)
+
+
 def ws_handler(sock,addr):
-    print 'ws handshaking'
+    print 'ws handshaking...'
+    print 'connected...'
+    print 'closing...'
 
 
 def websocket_server():
-    print 'listening for a WebSocket connection !'
-    svSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print 'listening for a WS connection... '
+    svSock = socket.socket()
+    svSock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
     svSock.bind(WS_ADDR)
     svSock.listen(5)
+    while (1):
+        wSock,wAddr = svSock.accept()
+        print 'accepted!'
+        threading.Thread(target=ws_handler,args=(wSock,wAddr)).start()
 
-    while 1:
-        wSock,wAddr = socket.socket.accept(svSock)
-        threading.Thread(None,ws_handler,"handler",(wSock,wAddr))
+
+#   a new listen thread
+def listen_ws():
+    threading.Thread(target=websocket_server()).start()

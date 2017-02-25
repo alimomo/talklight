@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Django Place Holder Images </title>
+    <link rel="stylesheet" href="{% static 'css/sites.css' %}" type="text/css">
+</head>
+
+<body>
+{% block body %}
+<h1>{% block heading %}Hello, world!
+{% endblock heading %}</h1>
+{% block content %}<p>Greetings from the Django
+templating engine!</p>{% endblock content %}
+{% endblock body %}
+</body>
+
+</html>
+
